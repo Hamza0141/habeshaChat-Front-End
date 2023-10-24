@@ -1,0 +1,138 @@
+.register {
+  height: 100vh;
+  background-color: rgb(193, 190, 255);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .card {
+    width: 90%; /* Change width for large screens */
+    max-width: 1200px; /* Add max-width to limit card size */
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: white;
+    border-radius: 10px;
+    min-height: 600px;
+    overflow: hidden;
+
+    .left {
+      flex: 1;
+      background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
+        url("https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600")
+          center;
+      background-size: cover;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      color: white;
+
+      h1 {
+        font-size: 3rem; /* Adjust font size for large screens */
+        line-height: 1.2;
+      }
+
+      span {
+        font-size: 1.2rem; /* Adjust font size for large screens */
+      }
+
+      button {
+        width: 40%; /* Adjust button width for large screens */
+        padding: 10px;
+        border: none;
+        background-color: white;
+        color: rebeccapurple;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    }
+
+    .right {
+      flex: 1;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px; /* Adjust gap for large screens */
+      justify-content: center;
+
+      h1 {
+        color: #555;
+        font-size: 2rem; /* Adjust font size for large screens */
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px; /* Adjust gap for large screens */
+
+        input {
+          width: 60%;
+          border: none;
+          border-bottom: 1px solid lightgray;
+          padding: 15px 10px; /* Adjust padding for large screens */
+        }
+
+        button {
+          width: 40%; /* Adjust button width for large screens */
+          padding: 10px;
+          border: none;
+          background-color: #938eef;
+          color: white;
+          font-weight: bold;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .card {
+      flex-direction: column; /* Stack elements on small screens */
+      min-height: auto; /* Remove minimum height for small screens */
+
+      .left {
+        flex: 1;
+        padding: 30px;
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        span {
+          font-size: 1rem;
+        }
+
+        button {
+          width: 100%;
+        }
+      }
+
+      .right {
+        flex: 1;
+        padding: 30px;
+
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        form {
+          gap: 15px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .card {
+      padding: 20px; /* Adjust padding for smaller screens */
+    }
+  }
+
+  @media (max-width: 360px) {
+    .left {
+      h1 {
+        font-size: 1.5rem; /* Adjust font size for very small screens */
+      }
+    }
+  }
+}

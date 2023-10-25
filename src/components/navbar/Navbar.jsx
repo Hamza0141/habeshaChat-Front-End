@@ -41,7 +41,9 @@ const Navbar = () => {
         <Link to="/" style={{ textDecoration: "none" }}>
           <span>habesha chat</span>
         </Link>
+        <Link to="/" style={{ textDecoration: "none" }}>
         <HomeOutlinedIcon />
+        </Link>
         {darkMode ? (
           <WbSunnyOutlinedIcon onClick={toggle} />
         ) : (

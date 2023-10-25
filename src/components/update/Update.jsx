@@ -27,6 +27,7 @@ const upload = async (file) => {
     const formData = new FormData();
     formData.append("image", file);
     const res = await makeRequest.post("/upload", formData);
+          toast.dismiss();
         toast.success("Profile Uploaded");
     return res.data.imageName;
   } catch (err) {

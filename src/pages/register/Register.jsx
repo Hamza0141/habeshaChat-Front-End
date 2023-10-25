@@ -26,16 +26,18 @@ const handleSubmit = async (e) => {
   e.preventDefault();
 
   try{
+    toast.loading("Registering...");
     const sentData = await makeRequest.post(
       "auth/register",
       inputs
     );
+      toast.dismiss();
       toast.success("User created Successfully ");
       navigator("/login")
     
   }catch (error){
 setError(error.response.data.error);
-toast.success("something went wrong!");
+toast.error("Something went wrong!");
   }
 };
 

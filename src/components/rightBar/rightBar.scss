@@ -1,10 +1,13 @@
 @import "../../style.scss";
-li{
+
+li {
   list-style: none;
 }
-a{
+
+a {
   text-decoration: none;
 }
+
 .rightBar {
   @include themify($themes) {
     flex: 3;
@@ -14,12 +17,13 @@ a{
     overflow: scroll;
     background-color: themed("bgSoft");
 
-    @include mobile{
+    @include mobile {
       display: none;
     }
-    @include tablet{
-      display: none;
-    }
+
+    // @include tablet{
+    //   display: none;
+    // }
 
     &::-webkit-scrollbar {
       display: none;
@@ -28,15 +32,14 @@ a{
     .container {
       padding: 20px;
 
-      .SuggestionWrapper{
+      .userListWrapper {
         -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
         -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
         box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
         padding: 20px;
         background-color: themed("bg");
         cursor: pointer;
-
-
+        color: themed("textColor");
       }
 
       .item {
@@ -44,14 +47,25 @@ a{
         -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
         box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
         padding: 20px;
-        // margin: 10px 0 10px 0;
         margin-bottom: 10px;
         background-color: themed("bg");
+        color: themed("textColor");
 
 
-        span {
-          color: gray;
-        }
+        .searchTitle:hover {
+            border: solid 1px #516CF0;
+          }
+        
+          .searchTitle {
+            height: 30px;
+            width: 80%;
+            margin-right: 10px;
+            background-color: transparent;
+            color: themed("textColor");
+            border-radius: 5px;
+            border-color: #516CF0;
+          }
+
 
         .user {
           display: flex;
@@ -88,33 +102,13 @@ a{
 
             span {
               font-weight: 500;
+              font-size: 80%;
               color: themed("textColor");
-            }
-          }
-          .SuggestionsList{
-            display: inline-block;
-            .Suggestions{
-            display: flex;
-            gap: 80px;
-            align-items: center;
-            margin-bottom: 10px;
-            img{
-              display: flex;
-              width: 40px;
-              height: 40px;
-              border-radius: 50%;
-              object-fit: cover;
 
             }
-            p{
-              color: themed("textColorSoft");
-              span{
-                font-weight: 500;
-              color: themed("textColor");
-              }
-            }
-}
+           
           }
+
 
           .buttons {
             display: flex;

@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 // import {dotenv} from "dotenv/config";
 const firebaseConfig = {
-  storageBucket: process.env.local.storageBucket,
+  storageBucket:process.env.storageBucket,
 };
 
 // Initialize Firebase

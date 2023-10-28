@@ -8,7 +8,9 @@ import { ImagePoket } from "../../context/ImageStore";
 
 const RightBar = () => {
   const [suggestionOpen, setSuggestionOpen] = useState(false);
+    const [searchPeople, setSearchPeople] = useState("");
   const [friendsOpen, setFriendsOpen] = useState(false);
+  
   const toggleSuggestions = () => {
     setSuggestionOpen(!suggestionOpen);
   };
@@ -38,38 +40,51 @@ const RightBar = () => {
   return (
     <div className="rightBar">
       <div className="container">
-        <div className="SuggestionWrapper" onClick={toggleSuggestions}>
-          Suggestions For You{" "}
-          {suggestionData?.length > 0 && suggestionData?.length}
+        <div className="userListWrapper" onClick={toggleSuggestions}>
+          Suggestions
         </div>
+
         {suggestionOpen && (
           <div className="item">
-            <div className="user">
-              <div className="SuggestionsList">
-                {suggestionData?.map((post) => (
-                  <div className="Suggestions" key={post.id}>
-                    <Link to={`/profile/${post.id}`}>
-                      <img src={getImageUrl(post.profile_pic)} />
+            <input
+              type="text"
+              className="searchTitle"
+              Placeholder="Search People ..."
+              onChange={(e) => setSearchPeople(e.target.value)}
+            />
+            {suggestionData
+              ?.filter((users) => {
+                if (searchPeople === "") {
+                  return true;
+                } else if (
+                  users.name.toLowerCase().includes(searchPeople.toLowerCase())
+                ) {
+                  return true; // Show users whose names match the search input
+                }
+                return false; // Hide other users
+              })
+              ?.map((users) => (
+                <div className="user">
+                  <div className="userInfo" key={users.id}>
+                    <Link to={`/profile/${users.id}`}>
+                      <img src={getImageUrl(users.profile_pic)} alt="" />
                     </Link>
                     <p>
-                      <span>{post.name}</span>
+                      <span>{users.name}</span>
                     </p>
                   </div>
-                ))}
-              </div>
-            </div>
+                </div>
+              ))}
           </div>
         )}
 
         <div className="item" style={{ marginTop: "10px" }}>
-          <span>
-            Followers {followerData?.length > 0 && followerData?.length}
-          </span>
+          Followers {followerData?.length > 0 && followerData?.length}
           {followerData?.map((followers) => (
             <div className="user">
               <div className="userInfo">
                 <Link to={`/profile/${followers.id}`}>
-                  <img src={getImageUrl(followers.profile_pic)} />
+                  <img src={getImageUrl(followers.profile_pic)} alt="" />
                 </Link>
                 <p>
                   <span>{followers.name}</span>
@@ -78,7 +93,7 @@ const RightBar = () => {
             </div>
           ))}
         </div>
-        <div className="SuggestionWrapper" onClick={toggleFriends}>
+        <div className="userListWrapper" onClick={toggleFriends}>
           Friends {friendsdata?.length > 0 && friendsdata?.length}
         </div>
         {friendsOpen && (

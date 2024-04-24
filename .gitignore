@@ -12,8 +12,8 @@
 /coverage
 
 # production
+/.firebase
 /build
-/src/axios.js
 # misc
 .DS_Store
 .env.local

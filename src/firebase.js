@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 // import {dotenv} from "dotenv/config";
 const firebaseConfig = {
-  storageBucket:process.env.storageBucket,
+  storageBucket:"habeshachat-5a1bf.appspot.com",
 };
 
 // Initialize Firebase

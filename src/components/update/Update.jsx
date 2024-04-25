@@ -29,10 +29,12 @@ const upload = async (file) => {
     const res = await makeRequest.post("/upload", formData);
           toast.dismiss();
         toast.success("Profile Uploaded");
+                    console.log(res.data.status);
+                    console.log(res.data.imageName);
     return res.data.imageName;
   } catch (err) {
     console.error(err);
-     toast.success("image size error")
+     toast.error("image size error")
     return null;
   }
 };

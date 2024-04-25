@@ -25,9 +25,13 @@ const Share = () => {
       const formData = new FormData();
       formData.append("image", file);
       const res = await makeRequest.post("/upload", formData);
-      setTimeout(() => {
-        window.location.reload();
-      }, 500);
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 500);
+            console.log(res.data.status);
+      console.log(res.data.imageName);
+      toast.dismiss();
+      toast.success("image uploaded");
       return res.data.imageName; // Assuming that the response includes the image name
     } catch (err) {
       console.error(err);
@@ -61,6 +65,7 @@ const Share = () => {
       description: description,
       image: image,
     };
+    console.log(newPost);
 
     mutation.mutate(newPost);
     setDescription("");

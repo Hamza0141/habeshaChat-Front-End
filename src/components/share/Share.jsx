@@ -20,24 +20,21 @@ const Share = () => {
   const QueryClient = useQueryClient();
 
   const upload = async () => {
-          toast.loading("image Uploading...");
     try {
+      toast.loading("image Uploading...");
       const formData = new FormData();
       formData.append("image", file);
       const res = await makeRequest.post("/upload", formData);
-      // setTimeout(() => {
-      //   window.location.reload();
-      // }, 500);
-            console.log(res.data.status);
-      console.log(res.data.imageName);
       toast.dismiss();
       toast.success("image uploaded");
       return res.data.imageName; // Assuming that the response includes the image name
     } catch (err) {
       console.error(err);
+      toast.error("image size error");
       return null;
     }
   };
+      
 
   const mutation = useMutation(
     (newPost) => {
@@ -65,12 +62,13 @@ const Share = () => {
       description: description,
       image: image,
     };
-    console.log(newPost);
 
-    mutation.mutate(newPost);
+
+    await mutation.mutate(newPost);
     setDescription("");
     setFile(null);
-    
+       toast.dismiss();
+       window.location.reload();
   };
 
   return (

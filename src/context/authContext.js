@@ -18,7 +18,14 @@ export const AuthContextProvider = ({ children }) => {
         }
       );
       if (response.status === 200) {
-        setCurrentUser(response.data);
+        // Extract token from response
+        const { token, ...userData } = response.data;
+
+        // Set token in cookie
+        document.cookie = `accessToken=${token}; Secure; SameSite=None`;
+
+        // Set user data in state
+        setCurrentUser(userData);
       } else {
         throw new Error("Login failed");
       }

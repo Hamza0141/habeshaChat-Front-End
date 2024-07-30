@@ -29,14 +29,13 @@ const upload = async (file) => {
     const res = await makeRequest.post("/upload", formData);
           toast.dismiss();
         toast.success("Profile Uploaded");
-                    console.log(res.data.status);
-                    console.log(res.data.imageName);
     return res.data.imageName;
   } catch (err) {
     console.error(err);
      toast.error("image size error")
     return null;
   }
+
 };
   const QueryClient = useQueryClient();
   const mutation = useMutation(
@@ -69,7 +68,7 @@ const upload = async (file) => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    
+
     let coverUrl = cover ? await upload(cover) : user.cover_pic;
     let profileUrl = profile ? await upload(profile) : user.profile_pic;
 
@@ -79,6 +78,7 @@ const upload = async (file) => {
       profile_pic: profileUrl,
     });
     setopenUpdate(false);
+    window.location.reload();
   };
 
   return (
